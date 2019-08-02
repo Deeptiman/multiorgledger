@@ -16,8 +16,8 @@ var secretKey = make(map[string]string)
 type OrgUser struct {
 	Username        	string
 	ChannelClient   	*channel.Client
-	Event				*event.Client
-	Setup	 			OrgSetup
+	Event			*event.Client
+	Setup	 		OrgSetup
 }
 
 var sessionOrgUser *OrgUser
