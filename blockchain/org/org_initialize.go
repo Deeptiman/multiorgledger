@@ -65,10 +65,10 @@ func(s *OrgSetup) InitializeOrg(org string) (OrgSetup,error) {
 		case "org1":
 
 			obj = OrgSetup {
-				OrgAdmin: 				"Admin",
-				OrgName:  				"org1",
+				OrgAdmin: 			"Admin",
+				OrgName:  			"org1",
 				ConfigFile: 			"config-org1.yaml",
-				OrgCaID: 				"ca.org1.multi.org.ledger.com",
+				OrgCaID: 			"ca.org1.multi.org.ledger.com",
 				ChannelConfig: 			"Org1MSPanchors.tx",
 			}
 		
@@ -77,10 +77,10 @@ func(s *OrgSetup) InitializeOrg(org string) (OrgSetup,error) {
 		case "org2":
 
 			obj = OrgSetup {
-				OrgAdmin: 				"Admin",
-				OrgName:  				"org2",
+				OrgAdmin: 			"Admin",
+				OrgName:  			"org2",
 				ConfigFile: 			"config-org2.yaml",
-				OrgCaID: 				"ca.org2.multi.org.ledger.com",
+				OrgCaID: 			"ca.org2.multi.org.ledger.com",
 				ChannelConfig: 			"Org2MSPanchors.tx",
 			}
 			 
@@ -89,10 +89,10 @@ func(s *OrgSetup) InitializeOrg(org string) (OrgSetup,error) {
 		case "org3":
 
 			obj = OrgSetup {
-				OrgAdmin: 				"Admin",
-				OrgName:  				"org3",
+				OrgAdmin: 			"Admin",
+				OrgName:  			"org3",
 				ConfigFile: 			"config-org3.yaml",
-				OrgCaID: 				"ca.org3.multi.org.ledger.com",
+				OrgCaID: 			"ca.org3.multi.org.ledger.com",
 				ChannelConfig: 			"Org3MSPanchors.tx",
 			}
 			 
@@ -101,10 +101,10 @@ func(s *OrgSetup) InitializeOrg(org string) (OrgSetup,error) {
 		case "org4":
 
 			obj = OrgSetup {
-				OrgAdmin: 				"Admin",
-				OrgName:  				"org4",
+				OrgAdmin: 			"Admin",
+				OrgName:  			"org4",
 				ConfigFile: 			"config-org4.yaml",
-				OrgCaID: 				"ca.org4.multi.org.ledger.com",
+				OrgCaID: 			"ca.org4.multi.org.ledger.com",
 				ChannelConfig: 			"Org4MSPanchors.tx",
 			} 
 
@@ -123,8 +123,8 @@ func(s *OrgSetup) InitializeOrg(org string) (OrgSetup,error) {
 func InitiateOrderer() (OrgSetup,error) {
 
 	obj := OrgSetup {
-		OrgAdmin: 				"Admin",
-		OrgName:  				"OrdererOrg",
+		OrgAdmin: 			"Admin",
+		OrgName:  			"OrdererOrg",
 		ConfigFile: 			"config-org1.yaml",
 		ChannelConfig: 			"multiorgledger.channel.tx",
 	}
