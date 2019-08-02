@@ -25,6 +25,32 @@ $ go version
 $ go version go1.<span class="hljs-number">11</span> linux/amd64
 </code></pre>
 
+<h4> Setup the Host </h4>
+
+<ul>
+<li>
+   Sometimes, in some of the local machine not able to identify or link the hyperledger endpoints with <b>localhost or 127.0.0.1</b>. So, it's better to add the hyperledger endpoints  in <b>/etc/hosts</b> mapping with 127.0.0.1   
+</li>
+  
+  <pre><code>
+  
+    127.0.0.1	orderer.multi.org.ledger.com
+    127.0.0.1	ca.org1.multi.org.ledger.com
+    127.0.0.1	peer0.org1.multi.org.ledger.com
+    127.0.0.1	peer1.org1.multi.org.ledger.com
+    127.0.0.1	peer0.org2.multi.org.ledger.com
+    127.0.0.1	peer1.org2.multi.org.ledger.com
+    127.0.0.1	peer0.org3.multi.org.ledger.com
+    127.0.0.1	peer1.org3.multi.org.ledger.com
+    127.0.0.1	peer0.org4.multi.org.ledger.com
+    127.0.0.1	peer1.org4.multi.org.ledger.com
+  
+  </code></pre>
+    
+</ul>
+    
+
+
 <h4>Setup the Config</h4>
 <ul>
 <li>
