@@ -93,15 +93,15 @@ func (t *MultiOrgChaincode) createUser(stub shim.ChaincodeStubInterface, args []
 
 
 	fmt.Println(" ###### Create Data Parameters ###### ")
-	fmt.Println(" ID 				= "+userID)
-	fmt.Println(" Email				= "+email)
-	fmt.Println(" Name 				= "+name)
+	fmt.Println(" ID 			= "+userID)
+	fmt.Println(" Email			= "+email)
+	fmt.Println(" Name 			= "+name)
 	fmt.Println(" Mobile 			= "+mobile)
-	fmt.Println(" Age				= "+age)
+	fmt.Println(" Age			= "+age)
 	fmt.Println(" Salary 			= "+salary)
 	fmt.Println(" Owner 			= "+owner)
-	fmt.Println(" Role				= "+role)
-	fmt.Println(" Time				= "+tm)
+	fmt.Println(" Role			= "+role)
+	fmt.Println(" Time			= "+tm)
 	fmt.Println(" ################################## ")
 
 
