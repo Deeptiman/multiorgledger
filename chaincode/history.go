@@ -33,24 +33,24 @@ func (t *MultiOrgChaincode) createHistory(stub shim.ChaincodeStubInterface, quer
 
 	fmt.Println("	################# Create History - "+email+" ###############	")
 	
-	fmt.Println("	EmailKey 		- "+emailIndexKey)
-	fmt.Println("	TxID	 		- "+txID)
+	fmt.Println("	EmailKey 	- "+emailIndexKey)
+	fmt.Println("	TxID	 	- "+txID)
 	fmt.Println("	QueryCreator	- "+queryCreator)
-	fmt.Println("	Query			- "+query)
+	fmt.Println("	Query		- "+query)
 	fmt.Println("	QueryCreatorOrg	- "+queryCreatorOrg)
-	fmt.Println("	Time			- "+time.String())
-	fmt.Println("	Remarks			- "+remarks)	
+	fmt.Println("	Time		- "+time.String())
+	fmt.Println("	Remarks		- "+remarks)	
 	
 	tm := model.GetTime(time)
 
 	history := &model.HistoryData {
-		EmailKey 			: emailIndexKey,
-		TxID	 			: txID,
+		EmailKey 		: emailIndexKey,
+		TxID	 		: txID,
 		QueryCreator	 	: queryCreator,
-		Query				: query,
+		Query			: query,
 		QueryCreatorOrg		: queryCreatorOrg,
-		Time				: tm,
-		Remarks				: remarks,		
+		Time			: tm,
+		Remarks			: remarks,		
 	}
 
 	historyDataJSONasBytes, err := json.Marshal(history)
