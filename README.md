@@ -105,9 +105,9 @@
  <p>s.Resmgmt - is the resource management client created during Org SDK initialization. So, each organization resource management client will execute the join channel action indivisually.</p>
 <pre><code>
 
-              if err := s.Resmgmt.JoinChannel(s.ChannelID, resmgmt.WithRetry(retry.DefaultResMgmtOpts),                                               resmgmt.WithOrdererEndpoint(Orderer.OrdererID)); err != nil {
-                    return errors.WithMessage(err, "failed to make admin join channel")
-              }
+    if err := s.Resmgmt.JoinChannel(s.ChannelID, resmgmt.WithRetry(retry.DefaultResMgmtOpts),                                               resmgmt.WithOrdererEndpoint(Orderer.OrdererID)); err != nil {
+       return errors.WithMessage(err, "failed to make admin join channel")
+    }
 </code></pre>
 </li>
 <li>
