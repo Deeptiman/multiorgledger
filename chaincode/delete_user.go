@@ -28,8 +28,8 @@ func (t *MultiOrgChaincode) deleteUser(stub shim.ChaincodeStubInterface, args []
 	needHistory, _ = strconv.ParseBool(args[6])
 
 	fmt.Println(" ###### Delete Data Parameters ###### ")
-	fmt.Println(" Email		= "+email)
-	fmt.Println(" Role		= "+role)
+	fmt.Println(" Email	= "+email)
+	fmt.Println(" Role	= "+role)
 	fmt.Println(" EventID	= "+eventID)
 	fmt.Println(" ################################## ")
 
