@@ -367,10 +367,10 @@ func(s *OrgSetup) TestInvoke(org string) error {
 	eventID := "testInvoke - "+org
 
 	orgSetup := s.ChooseORG(org)
-	orgName 			:= 	orgSetup.OrgName
-	orgSdk				:=  orgSetup.Sdk
-	orgAdmin			:=  orgSetup.OrgAdmin
-	caClient 			:= 	orgSetup.CaClient
+	orgName 		:= orgSetup.OrgName
+	orgSdk			:= orgSetup.Sdk
+	orgAdmin		:= orgSetup.OrgAdmin
+	caClient 		:= orgSetup.CaClient
 	channelClient, event,_ := s.CreateChannelClient(orgSdk, orgName, orgAdmin, caClient)
 
 	_, err := s.ExecuteChaincodeTranctionEvent(eventID, "invoke",[][]byte{
