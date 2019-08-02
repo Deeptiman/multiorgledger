@@ -1,2 +1,1 @@
-# Example of a `.gitattributes` file which reclassifies `.rb` files as Go:
-*.rb linguist-language=Go
+static/* linguist-vendored
