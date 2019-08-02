@@ -1,6 +1,30 @@
 <h1>Multi Org Ledger</h1>
 <p><a href="https://www.hyperledger.org/projects/fabric"><img src="https://www.hyperledger.org/wp-content/uploads/2016/09/logo_hl_new.png" alt="N|Solid"></a></p>
 <p>Multi Org Ledger is a web application written in Go to demonstrate the Multi Org setup in a Hyperledger Fabric network. The blockchain network consists of four organization joined with a single channel. The ledger data created in an organization can be accessible by the other participating organization in the network.</p>
+<p> However, this explanation guide does not explain how Hyperledger Fabric works, so for the information, you can follow at <a href="https://www.hyperledger.org/projects/fabric">Hyperledger.</a> </p>
+
+<h4><a id="Installation_6"></a>Installation</h4>
+<p>Employeeledger requires <a href="https://www.docker.com/">Docker</a> &amp; <a href="https://golang.org/">Go</a> to run.</p>
+<h3><a id="Docker_10"></a>Docker</h3>
+<pre><code class="language-sh">$ sudo apt install docker.io
+$ sudo apt install docker-compose
+</code></pre>
+<h2><a id="Go_15"></a>Go</h2>
+<h4><a id="Installation_16"></a>Installation</h4>
+<pre><code class="language-sh">$ sudo apt-get update
+$ sudo apt-get install golang-go
+</code></pre>
+<h4><a id="Set_your_Go_path_as_environmental_variable_21"></a>Set your Go path as environmental variable</h4>
+<h6><a id="add_these_following_variable_into_the_profile_22"></a>add these following variable into the profile</h6>
+<pre><code class="language-sh">$ <span class="hljs-built_in">export</span> GOPATH=<span class="hljs-variable">$HOME</span>/go
+$ <span class="hljs-built_in">export</span> PATH=<span class="hljs-variable">$PATH</span>:/usr/<span class="hljs-built_in">local</span>/go/bin:<span class="hljs-variable">$GOPATH</span>/bin
+</code></pre>
+<h6><a id="then_27"></a>then</h6>
+<pre><code class="language-sh">$ <span class="hljs-built_in">source</span> ~/.profile
+$ go version
+$ go version go1.<span class="hljs-number">11</span> linux/amd64
+</code></pre>
+
 <h4>Setup the Config</h4>
 <ul>
 <li>
@@ -191,8 +215,8 @@
 <ul>
 <li>
 <p>As the chaincode only be instantiated once, so if any changes made in the chaincode, then it will be upgraded with a new version code and keeping the chaincode name same (important) in the network.</p>
-<p>// Any one of organization resource management client can execute the upgrade query and their peers will be mention in the target.
-// Policy can be remain the same unless it requires modification based on your chaincode buiseness requirements.</p>
+<p>// Any one of organization resource management client can execute the upgrade query and their peers will be mention in the target.</p>
+<p>// Policy can be remain the same unless it requires modification based on your chaincode buiseness requirements.</p>
 <pre><code>
 
         req := resmgmt.UpgradeCCRequest{
