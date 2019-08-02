@@ -319,3 +319,18 @@
 </li>
 </ol>
 
+<h4>Few Screenshots</h4>
+
+<h5> Dashboard </h5>
+
+<img src="screenshots/3_dashboard.png">
+
+
+<h5> History </h5>
+
+<img src="screenshots/5_history.png">
+
+
+<h5> Edit </h5>
+
+<img src="screenshots/4_edit.png">
