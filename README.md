@@ -1,6 +1,6 @@
 <h1>Multi Org Ledger</h1>
 <p><a href="https://www.hyperledger.org/projects/fabric"><img src="https://www.hyperledger.org/wp-content/uploads/2016/09/logo_hl_new.png" alt="N|Solid"></a></p>
-<p>MultiOrg Ledger is a web application written in Go to demonstrate the Multi Org setup in a Hyperledger Fabric network. The blockchain network consists of four organization joined with a single channel. The ledger data created in an organization can be accessible by the other participating organization in the network.</p>
+<p>Multi Org Ledger is a web application written in Go to demonstrate the Multi Org setup in a Hyperledger Fabric network. The blockchain network consists of four organization joined with a single channel. The ledger data created in an organization can be accessible by the other participating organization in the network.</p>
 <h4>Setup the Config</h4>
 <ul>
 <li>
@@ -31,7 +31,9 @@
 </li>
 </ol>
 <p><b>config.sh</b></p>
-<pre><code> ./bin/cryptogen generate --config=./crypto-config.yaml
+<pre><code> 
+
+./bin/cryptogen generate --config=./crypto-config.yaml
 
 ./bin/configtxgen -profile FourOrgsOrdererGenesis -outputBlock ./artifacts/orderer.genesis.block
 
