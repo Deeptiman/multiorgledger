@@ -3,10 +3,10 @@ package main
 import (
 	"crypto/sha1"
 	"encoding/hex"
-    "encoding/json"
+    	"encoding/json"
 	"fmt"
 	"sync"
-    "io/ioutil"
+    	"io/ioutil"
 	"github.com/multiorgledger/blockchain/org"
 	"github.com/multiorgledger/blockchain/invoke"
 	"github.com/multiorgledger/chaincode/model"
