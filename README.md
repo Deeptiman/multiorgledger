@@ -2,7 +2,7 @@
 <p><a href="https://www.hyperledger.org/projects/fabric"><img src="https://www.hyperledger.org/wp-content/uploads/2016/09/logo_hl_new.png" alt="N|Solid"></a></p>
 <p>Multi Org Ledger is a web application written in Go to demonstrate the Multi Org setup in a Hyperledger Fabric network. The blockchain network consists of four organization joined with a single channel. The ledger data created in an organization can be accessible by the other participating organization in the network.</p>
 <p> However, this explanation guide does not explain how Hyperledger Fabric works, so for the information, you can follow at <a href="https://www.hyperledger.org/projects/fabric">Hyperledger.</a> </p>
-<p><b>Medium writeup : <a href="https://medium.com/@deeptiman/a-multi-organization-application-in-hyperledger-fabric-8612cef5bbae">https://medium.com/@deeptiman/a-multi-organization-application-in-hyperledger-fabric-8612cef5bbae</a></b>
+<p><b>Medium writeup : </b><a href="https://medium.com/@deeptiman/a-multi-organization-application-in-hyperledger-fabric-8612cef5bbae">https://medium.com/@deeptiman/a-multi-organization-application-in-hyperledger-fabric-8612cef5bbae</a>
 
 <h4><a id="Installation_6"></a>Installation</h4>
 <p>Multi Org Ledger requires <a href="https://www.docker.com/">Docker</a> &amp; <a href="https://golang.org/">Go</a> to run.</p>
