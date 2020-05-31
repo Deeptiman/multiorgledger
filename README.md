@@ -404,3 +404,6 @@ $ go version go1.<span class="hljs-number">11</span> linux/amd64
 <h5> Edit </h5>
 
 <img src="screenshots/4_edit.png">
+
+<h2>License</h2>
+<p>This project is licensed under the <a href="https://github.com/Deeptiman/multiorgledger/blob/master/LICENSE">MIT License</a></p>
