@@ -394,7 +394,7 @@ $ go version go1.<span class="hljs-number">11</span> linux/amd64
 
 <h5> Dashboard </h5>
 
-<img src="screenshots/3_dashboard.png">
+<img src="screenshots/export_dashboard.png">
 
 
 <h5> History </h5>
