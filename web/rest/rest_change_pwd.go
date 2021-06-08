@@ -2,8 +2,8 @@ package rest
 
 import (
 	"encoding/json"
+	"multiorgledger/web/model"
 	"net/http"
-	"github.com/multiorgledger/web/model"
 )
 
 func (app *RestApp) ChangePwdHandler() func(http.ResponseWriter, *http.Request) {

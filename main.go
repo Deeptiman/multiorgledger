@@ -2,20 +2,19 @@ package main
 
 import (
 	"fmt"
+	"multiorgledger/blockchain/org"
+	"multiorgledger/web"
+	"multiorgledger/web/html"
+	"multiorgledger/web/rest"
 	"strings"
-	"github.com/multiorgledger/blockchain/org"
-	"github.com/multiorgledger/web"	
-	"github.com/multiorgledger/web/html"
-	"github.com/multiorgledger/web/rest"
 )
-
 
 func main() {
 
 	fmt.Println(" Choose the following ")
 	fmt.Println(" 1. Deploy the network")
 	fmt.Println(" 2. Start the Rest Server (Listening (http://localhost:4000) ...)")
-	fmt.Println(" 3. Start the Html Web App (Listening (http://localhost:6000) ...)")	
+	fmt.Println(" 3. Start the Html Web App (Listening (http://localhost:6000) ...)")
 	fmt.Println(" 4. Create Dummy Users")
 
 	var choose string
@@ -25,8 +24,8 @@ func main() {
 	setup := &org.OrgSetup{}
 	_ = setup.Init(false)
 
-	if strings.EqualFold(choose,"1"){
-	
+	if strings.EqualFold(choose, "1") {
+
 		fmt.Println(" Deployement of a network")
 		fmt.Println("   1.  Create Channel")
 		fmt.Println("   2.  Join Channel")
@@ -41,24 +40,23 @@ func main() {
 		var cmd string
 		fmt.Scanln(&cmd)
 
-		err := DeployCMD(&org.OrgSetup{},cmd)
+		err := DeployCMD(&org.OrgSetup{}, cmd)
 		if err != nil {
 			fmt.Println(" setup Failed " + err.Error())
 			return
 		}
 	}
 
-	if strings.EqualFold(choose,"2"){
-	 		
+	if strings.EqualFold(choose, "2") {
+
 		app := &rest.RestApp{
 			Org: setup,
 		}
 		web.RestServe(app)
 	}
 
+	if strings.EqualFold(choose, "3") {
 
-	if strings.EqualFold(choose,"3"){
-	
 		app := &html.HtmlApp{
 			Org: setup,
 		}

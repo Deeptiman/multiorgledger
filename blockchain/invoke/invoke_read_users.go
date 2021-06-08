@@ -1,10 +1,10 @@
 package invoke
 
 import (
-	"fmt"
-	"strconv"
 	"encoding/json"
-	"github.com/multiorgledger/chaincode/model"
+	"fmt"
+	"multiorgledger/chaincode/model"
+	"strconv"
 )
 
 func (s *OrgInvoke) GetAllUsersFromLedger() ([]model.User, error) {
@@ -12,23 +12,22 @@ func (s *OrgInvoke) GetAllUsersFromLedger() ([]model.User, error) {
 	fmt.Println(" ############## Invoke Read All User ################")
 
 	eventID := "getAllUsersInvoke"
-	
+
 	response, err := s.User.Setup.ExecuteChaincodeTranctionEvent(eventID, "invoke",
 		[][]byte{
-			[]byte("readAllUser"), 
+			[]byte("readAllUser"),
 			[]byte(eventID),
+		}, s.User.Setup.ChaincodeId, s.User.ChannelClient, s.User.Event)
 
-		}, s.User.Setup.ChaincodeId, s.User.ChannelClient,s.User.Event)
-	
 	if err != nil {
 		return nil, fmt.Errorf("Error - addUserToLedger : %s", err.Error())
 	}
-	
+
 	fmt.Println("Response Received")
 
 	allUsers := make([]model.User, 0)
 
-	if response !=nil && response.Payload == nil {
+	if response != nil && response.Payload == nil {
 		return nil, fmt.Errorf("unable to get response for the query: %v", err)
 	}
 
@@ -45,11 +44,11 @@ func (s *OrgInvoke) GetAllUsersFromLedger() ([]model.User, error) {
 
 	/*fmt.Println("#### All Users Records Found ####")
 	for _, user := range allUsers {
-		
+
 		fmt.Println("Read User : "+user.Name+" -- "+user.Email)
 
 		targets := user.Targets
-		err := s.ParseOrgTargets(targets)	
+		err := s.ParseOrgTargets(targets)
 
 		if err != nil {
 			fmt.Errorf("Failed to parse Org Targets - %s ",err.Error())
@@ -59,17 +58,16 @@ func (s *OrgInvoke) GetAllUsersFromLedger() ([]model.User, error) {
 	return allUsers, nil
 }
 
-
-func (s *OrgInvoke) GetUserFromLedger(email string, needHistory bool) (*model.User,error) {
+func (s *OrgInvoke) GetUserFromLedger(email string, needHistory bool) (*model.User, error) {
 
 	fmt.Println(" ############## Invoke Read User From Ledger ################")
 
 	eventID := "getUserInvoke"
 	queryCreatorOrg := s.User.Setup.OrgName
 
-	fmt.Println(" Email = "+email)
+	fmt.Println(" Email = " + email)
 
-	fmt.Println(" Need History - "+strconv.FormatBool(needHistory))
+	fmt.Println(" Need History - " + strconv.FormatBool(needHistory))
 
 	response, err := s.User.Setup.ExecuteChaincodeTranctionEvent(eventID, "invoke",
 		[][]byte{
@@ -78,7 +76,7 @@ func (s *OrgInvoke) GetUserFromLedger(email string, needHistory bool) (*model.Us
 			[]byte(eventID),
 			[]byte(queryCreatorOrg),
 			[]byte(strconv.FormatBool(needHistory)),
-		}, s.User.Setup.ChaincodeId, s.User.ChannelClient,s.User.Event)
+		}, s.User.Setup.ChaincodeId, s.User.ChannelClient, s.User.Event)
 
 	if err != nil {
 		return nil, fmt.Errorf("Error - Get User From Ledger : %s", err.Error())
@@ -96,10 +94,10 @@ func (s *OrgInvoke) GetUserFromLedger(email string, needHistory bool) (*model.Us
 	}
 
 	fmt.Println("#### User Found #### ")
-	fmt.Println(" Email 	= "+user.Email)
-	fmt.Println(" Mobile  	= "+user.Mobile)
-	fmt.Println(" Age 		= "+user.Age)
-	fmt.Println(" Salary 	= "+user.Salary)
+	fmt.Println(" Email 	= " + user.Email)
+	fmt.Println(" Mobile  	= " + user.Mobile)
+	fmt.Println(" Age 		= " + user.Age)
+	fmt.Println(" Salary 	= " + user.Salary)
 	fmt.Println(" ################################## ")
 
 	return user, nil

@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
-	"strings"
+	"multiorgledger/chaincode/model"
 	"strconv"
-	"github.com/multiorgledger/chaincode/model"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
-)
+	"strings"
 
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
+)
 
 func (t *MultiOrgChaincode) readUser(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 
@@ -20,19 +20,19 @@ func (t *MultiOrgChaincode) readUser(stub shim.ChaincodeStubInterface, args []st
 	var queryCreator string
 	var needHistory bool
 
-	email 	= args[1]
+	email = args[1]
 	eventID = args[2]
 	queryCreatorOrg = args[3]
 	needHistory, _ = strconv.ParseBool(args[4])
 
-	role , err := t.getRole(stub)
+	role, err := t.getRole(stub)
 	if err != nil {
 		return shim.Error(fmt.Sprintf("Unable to get roles from the account: %v", err))
 	}
 
-	fmt.Println(" Read User - Role === "+role)
+	fmt.Println(" Read User - Role === " + role)
 
-	fmt.Println("##### Read "+email+" User #####")
+	fmt.Println("##### Read " + email + " User #####")
 
 	indexName := "email"
 	userNameIndexKey, err := stub.CreateCompositeKey(indexName, []string{email})
@@ -52,24 +52,20 @@ func (t *MultiOrgChaincode) readUser(stub shim.ChaincodeStubInterface, args []st
 		return shim.Error(err.Error())
 	}
 
+	/*	Created History for Read by email Transaction */
 
-
-		/*	Created History for Read by email Transaction */
-
-		if needHistory {
-			if strings.EqualFold(role,model.ADMIN){
-				queryCreator = model.GetCustomOrgName(queryCreatorOrg)+" Admin"
-			} else {
-				queryCreator = email
-			}
-
-			query   := args[0]
-			remarks := queryCreator+" read "+email+" 's user details"
-			t.createHistory(stub, queryCreator, queryCreatorOrg, email, query, remarks)
+	if needHistory {
+		if strings.EqualFold(role, model.ADMIN) {
+			queryCreator = model.GetCustomOrgName(queryCreatorOrg) + " Admin"
+		} else {
+			queryCreator = email
 		}
 
-	
-	
+		query := args[0]
+		remarks := queryCreator + " read " + email + " 's user details"
+		t.createHistory(stub, queryCreator, queryCreatorOrg, email, query, remarks)
+	}
+
 	return shim.Success(userAsByte)
 }
 
@@ -77,14 +73,14 @@ func (t *MultiOrgChaincode) readAllUser(stub shim.ChaincodeStubInterface, args [
 
 	fmt.Println("##### Read All User #####")
 
-	role , err := t.getRole(stub)
+	role, err := t.getRole(stub)
 	if err != nil {
 		return shim.Error(fmt.Sprintf("Unable to get roles from the account: %v", err))
 	}
 
-	fmt.Println(" Read All User - Role : "+role)
-	
-	if !strings.EqualFold(role,model.ADMIN){
+	fmt.Println(" Read All User - Role : " + role)
+
+	if !strings.EqualFold(role, model.ADMIN) {
 		return shim.Error(fmt.Sprintf("Only admin can read all the user data from the ledger: %v", err))
 	}
 
@@ -112,7 +108,7 @@ func (t *MultiOrgChaincode) readAllUser(stub shim.ChaincodeStubInterface, args [
 			return shim.Error(fmt.Sprintf("Unable to convert a user: %v", err))
 		}
 
-		fmt.Println("Read User : "+user.Name+" -- "+user.Email)
+		fmt.Println("Read User : " + user.Name + " -- " + user.Email)
 
 		allUsers = append(allUsers, user)
 	}

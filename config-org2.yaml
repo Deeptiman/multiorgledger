@@ -58,7 +58,7 @@ client:
 
   # Root of the MSP directories with keys and certs.
   cryptoconfig:
-    path: ${GOPATH}/src/github.com/multiorgledger/fixtures/crypto-config
+    path: ${GOPATH}/src/multiorgledger/fixtures/crypto-config
 
   # Some SDKs support pluggable KV stores, the properties under "credentialStore"
   # are implementation specific
@@ -194,9 +194,9 @@ organizations:
     # this way. The SDK should allow applications to set the org admin identity via APIs, and only use
     # this route as an alternative when it exists.
     adminPrivateKey:
-      path: ${GOPATH}/src/github.com/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/users/Admin@org2.multi.org.ledger.com/msp/keystore/752fe10826b49b218019851b8c9a9cece497e4ee10844835929fc41ce95c28e3_sk
+      path: ${GOPATH}/src/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/users/Admin@org2.multi.org.ledger.com/msp/keystore/752fe10826b49b218019851b8c9a9cece497e4ee10844835929fc41ce95c28e3_sk
     signedCert:
-      path: ${GOPATH}/src/github.com/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/users/Admin@org2.multi.org.ledger.com/msp/signcerts/Admin@org2.multi.org.ledger.com-cert.pem  
+      path: ${GOPATH}/src/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/users/Admin@org2.multi.org.ledger.com/msp/signcerts/Admin@org2.multi.org.ledger.com-cert.pem  
 
   ordererorg:
       # Membership Service Provider ID for this organization
@@ -231,8 +231,8 @@ orderers:
 
     tlsCACerts:
       # Certificate location absolute path
-      #path: ${GOPATH}/src/github.com/multiorgledger/fixtures/crypto-config/ordererOrganizations/multi.org.ledger.com/tlsca/tlsca.multi.org.ledger.com-cert.pem
-      path: ${GOPATH}/src/github.com/multiorgledger/fixtures/crypto-config/ordererOrganizations/multi.org.ledger.com/orderers/orderer.multi.org.ledger.com/tls/ca.crt
+      #path: ${GOPATH}/src/multiorgledger/fixtures/crypto-config/ordererOrganizations/multi.org.ledger.com/tlsca/tlsca.multi.org.ledger.com-cert.pem
+      path: ${GOPATH}/src/multiorgledger/fixtures/crypto-config/ordererOrganizations/multi.org.ledger.com/orderers/orderer.multi.org.ledger.com/tls/ca.crt
 #
 # List of peers to send various requests to, including endorsement, query
 # and event listener registration.
@@ -259,8 +259,8 @@ peers:
 
     tlsCACerts:
       # Certificate location absolute path
-      #path: ${GOPATH}/src/github.com/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/tlsca/tlsca.org2.multi.org.ledger.com-cert.pem
-      path: ${GOPATH}/src/github.com/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/peers/peer0.org2.multi.org.ledger.com/tls/ca.crt
+      #path: ${GOPATH}/src/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/tlsca/tlsca.org2.multi.org.ledger.com-cert.pem
+      path: ${GOPATH}/src/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/peers/peer0.org2.multi.org.ledger.com/tls/ca.crt
 
   peer1.org2.multi.org.ledger.com:
     # this URL is used to send endorsement and query requests
@@ -282,8 +282,8 @@ peers:
 
     tlsCACerts:
       # Certificate location absolute path
-      #path: ${GOPATH}/src/github.com/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/tlsca/tlsca.org2.multi.org.ledger.com-cert.pem
-      path: ${GOPATH}/src/github.com/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/peers/peer1.org2.multi.org.ledger.com/tls/ca.crt
+      #path: ${GOPATH}/src/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/tlsca/tlsca.org2.multi.org.ledger.com-cert.pem
+      path: ${GOPATH}/src/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/peers/peer1.org2.multi.org.ledger.com/tls/ca.crt
 
 
 #
@@ -297,7 +297,7 @@ certificateAuthorities:
 
     tlsCACerts:
       # Comma-Separated list of paths
-      path: ${GOPATH}/src/github.com/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/ca/ca.org2.multi.org.ledger.com-cert.pem
+      path: ${GOPATH}/src/multiorgledger/fixtures/crypto-config/peerOrganizations/org2.multi.org.ledger.com/ca/ca.org2.multi.org.ledger.com-cert.pem
 
     # Fabric-CA supports dynamic user enrollment via REST APIs. A "root" user, a.k.a registrar, is
     # needed to enroll and invoke new users.

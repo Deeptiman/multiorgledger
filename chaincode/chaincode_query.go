@@ -1,17 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"encoding/json"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-)
+	"fmt"
 
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+)
 
 func getDataFromLedger(stub shim.ChaincodeStubInterface, key string, result interface{}) error {
 
 	resultAsByte, err := stub.GetState(key)
 	if err != nil {
-		return fmt.Errorf("Get User Data Error "+err.Error())
+		return fmt.Errorf("Get User Data Error " + err.Error())
 	}
 
 	if err != nil {

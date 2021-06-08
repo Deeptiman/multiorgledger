@@ -3,9 +3,9 @@ package rest
 import (
 	"encoding/json"
 	"fmt"
+	"multiorgledger/blockchain/invoke"
+	"multiorgledger/web/model"
 	"net/http"
-	"github.com/multiorgledger/blockchain/invoke"
-	"github.com/multiorgledger/web/model"
 )
 
 func (app *RestApp) UpdateUserHandler() func(http.ResponseWriter, *http.Request) {
@@ -17,11 +17,10 @@ func (app *RestApp) UpdateUserHandler() func(http.ResponseWriter, *http.Request)
 		if orgUser == nil {
 			respondJSON(w, map[string]string{"error": "No Session Available"})
 		} else {
-			
+
 			var userdata model.ModelUserData
 			_ = json.NewDecoder(r.Body).Decode(&userdata)
-	
-		
+
 			name := userdata.Name
 			email := userdata.Email
 			mobile := userdata.Mobile
@@ -31,16 +30,15 @@ func (app *RestApp) UpdateUserHandler() func(http.ResponseWriter, *http.Request)
 
 			fmt.Println(" ####### Rest Input for Update ####### ")
 
-			fmt.Println(" Update Email	 	= "+email)
-			fmt.Println(" Update Name 		= "+name)
-			fmt.Println(" Update Mobile 	= "+mobile)
-			fmt.Println(" Update Age 		= "+age)
-			fmt.Println(" Update Salary 	= "+salary)
-			fmt.Println(" Update Role 		= "+role)
+			fmt.Println(" Update Email	 	= " + email)
+			fmt.Println(" Update Name 		= " + name)
+			fmt.Println(" Update Mobile 	= " + mobile)
+			fmt.Println(" Update Age 		= " + age)
+			fmt.Println(" Update Salary 	= " + salary)
+			fmt.Println(" Update Role 		= " + role)
 			fmt.Println(" ###################################### ")
 
-			
-			orgInvoke := invoke.OrgInvoke {
+			orgInvoke := invoke.OrgInvoke{
 				User: orgUser,
 			}
 

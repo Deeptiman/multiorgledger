@@ -1,16 +1,17 @@
 package main
 
 import (
-	"fmt"
-	"github.com/hyperledger/fabric/core/chaincode/shim"	
-	pb "github.com/hyperledger/fabric/protos/peer"
-	"github.com/hyperledger/fabric/protos/msp"
-	"github.com/golang/protobuf/proto"
 	"encoding/json"
-	"github.com/multiorgledger/chaincode/model"
+	"fmt"
+	"multiorgledger/chaincode/model"
+
+	"github.com/golang/protobuf/proto"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	"github.com/hyperledger/fabric-protos-go/msp"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
 )
 
-func (t *MultiOrgChaincode) createHistory(stub shim.ChaincodeStubInterface, queryCreator, queryCreatorOrg, email, query, remarks string ) pb.Response {
+func (t *MultiOrgChaincode) createHistory(stub shim.ChaincodeStubInterface, queryCreator, queryCreatorOrg, email, query, remarks string) pb.Response {
 
 	serializedID, _ := stub.GetCreator()
 	sId := &msp.SerializedIdentity{}
@@ -19,10 +20,10 @@ func (t *MultiOrgChaincode) createHistory(stub shim.ChaincodeStubInterface, quer
 		return shim.Error(fmt.Sprintf("Could not deserialize a SerializedIdentity, err %s", err))
 	}
 
-	txID 		:= stub.GetTxID()	
-	time, err 	:= stub.GetTxTimestamp()
+	txID := stub.GetTxID()
+	time, err := stub.GetTxTimestamp()
 	if err != nil {
-		return shim.Error("Timestamp Error "+err.Error())
+		return shim.Error("Timestamp Error " + err.Error())
 	}
 
 	emailKey := email
@@ -31,26 +32,26 @@ func (t *MultiOrgChaincode) createHistory(stub shim.ChaincodeStubInterface, quer
 		return shim.Error(err.Error())
 	}
 
-	fmt.Println("	################# Create History - "+email+" ###############	")
-	
-	fmt.Println("	EmailKey 	- "+emailIndexKey)
-	fmt.Println("	TxID	 	- "+txID)
-	fmt.Println("	QueryCreator	- "+queryCreator)
-	fmt.Println("	Query		- "+query)
-	fmt.Println("	QueryCreatorOrg	- "+queryCreatorOrg)
-	fmt.Println("	Time		- "+time.String())
-	fmt.Println("	Remarks		- "+remarks)	
-	
+	fmt.Println("	################# Create History - " + email + " ###############	")
+
+	fmt.Println("	EmailKey 	- " + emailIndexKey)
+	fmt.Println("	TxID	 	- " + txID)
+	fmt.Println("	QueryCreator	- " + queryCreator)
+	fmt.Println("	Query		- " + query)
+	fmt.Println("	QueryCreatorOrg	- " + queryCreatorOrg)
+	fmt.Println("	Time		- " + time.String())
+	fmt.Println("	Remarks		- " + remarks)
+
 	tm := model.GetTime(time)
 
-	history := &model.HistoryData {
-		EmailKey 		: emailIndexKey,
-		TxID	 		: txID,
-		QueryCreator	 	: queryCreator,
-		Query			: query,
-		QueryCreatorOrg		: queryCreatorOrg,
-		Time			: tm,
-		Remarks			: remarks,		
+	history := &model.HistoryData{
+		EmailKey:        emailIndexKey,
+		TxID:            txID,
+		QueryCreator:    queryCreator,
+		Query:           query,
+		QueryCreatorOrg: queryCreatorOrg,
+		Time:            tm,
+		Remarks:         remarks,
 	}
 
 	historyDataJSONasBytes, err := json.Marshal(history)
@@ -65,21 +66,20 @@ func (t *MultiOrgChaincode) createHistory(stub shim.ChaincodeStubInterface, quer
 		return shim.Error(err.Error())
 	}
 
-	fmt.Println(" ############### History Created for - "+email)
+	fmt.Println(" ############### History Created for - " + email)
 
 	return shim.Success(nil)
 }
 
-
-func (t *MultiOrgChaincode) readHistory(stub shim.ChaincodeStubInterface, args[] string) pb.Response {
+func (t *MultiOrgChaincode) readHistory(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 
 	var email, eventID string
 
 	email = args[1]
 	eventID = args[2]
 
-	fmt.Println("	################# Read History - "+email+" ###############	")
-	
+	fmt.Println("	################# Read History - " + email + " ###############	")
+
 	emailKey := email
 	iterator, err := stub.GetStateByPartialCompositeKey(emailKey, []string{})
 	if err != nil {

@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	pb "github.com/hyperledger/fabric/protos/peer"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	pb "github.com/hyperledger/fabric-protos-go/peer"
 )
 
 // MultiOrgChaincode implementation of Chaincode
@@ -39,7 +39,7 @@ func (t *MultiOrgChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response
 		return shim.Error("The number of arguments is insufficient.")
 	}
 
-	fmt.Println("Called Function - "+args[0])
+	fmt.Println("Called Function - " + args[0])
 
 	if args[0] == "createUser" {
 
@@ -51,12 +51,12 @@ func (t *MultiOrgChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response
 		fmt.Println("Update User Data Function Called")
 		return t.updateUserData(stub, args)
 
-	}  else if args[0] == "readUser" {
+	} else if args[0] == "readUser" {
 
 		fmt.Println("Read User Function Called")
 		return t.readUser(stub, args)
 
-	}  else if args[0] == "readAllUser" {
+	} else if args[0] == "readAllUser" {
 
 		fmt.Println("Read All User Function Called")
 		return t.readAllUser(stub, args)
@@ -73,7 +73,7 @@ func (t *MultiOrgChaincode) Invoke(stub shim.ChaincodeStubInterface) pb.Response
 
 		eventID := args[1]
 
-		fmt.Println(" #####  Test Event  - "+eventID)
+		fmt.Println(" #####  Test Event  - " + eventID)
 
 		err := stub.SetEvent(eventID, []byte{})
 		if err != nil {
